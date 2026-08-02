@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coach sportive privée à Lille | Her Process — Nina</title>
+<meta name="description" content="Coaching sportif et nutritionnel privé pour femmes à Lille, en visio ou via l'application Her Process. Programme sur-mesure, suivi et ajustement chaque semaine. Bilan découverte gratuit.">
+<link rel="canonical" href="https://herprocess.fr/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Her Process">
+<meta property="og:title" content="Coach sportive privée à Lille | Her Process — Nina">
+<meta property="og:description" content="Coaching sportif et nutritionnel privé pour femmes à Lille, en visio ou via l'application Her Process.">
+<meta property="og:url" content="https://herprocess.fr/">
+<meta property="og:image" content="https://herprocess.fr/logo.png">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="theme-color" content="#4B1616">
+
+<!--
+  ============================================================================
+  COMMENT MODIFIER CETTE PAGE
+  ============================================================================
+  Tout le texte est directement dans le HTML ci-dessous, dans l'ordre où il
+  apparaît sur la page (section hero, "ce qui bloque", méthode, résultats,
+  à propos, FAQ, CTA final). Pour changer une phrase, cherche-la dans le
+  fichier et remplace-la — pas besoin de toucher au <style> ni au <script>.
+
+  PHOTOS / VIDÉOS : chaque emplacement encore vide a une div
+  <div class="plate ..."> avec un petit encart "photo/vidéo à ajouter".
+  Pour mettre une vraie photo, remplace tout le contenu de cette div par :
+    <img src="/photos/ton-fichier.jpg" alt="..." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  (dépose le fichier ton-fichier.jpg dans ce même dossier, ou dans un
+  sous-dossier /photos, puis mets à jour le chemin).
+
+  Pour une vidéo, remplace le contenu de la div par :
+    <video src="/videos/ton-fichier.mp4" controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+
+  INSTAGRAM : le bouton "Me suivre" et le bloc "Ou suis Nina au quotidien"
+  sont volontairement absents tant que le compte n'est pas prêt. Cherche
+  les commentaires "Bouton Me suivre" et "Bloc Instagram" plus bas pour
+  savoir où les remettre.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#F7F1EA;
+    --paper:#FCFAF6;
+    --ink:#221715;
+    --wine:#4B1616;
+    --wine-deep:#320D0D;
+    --pink:#E8879C;
+    --pink-soft:#F1B9C4;
+    --sand:#E4D9C8;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-font-smoothing:antialiased; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:15.5px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{ font-family:'Poppins',sans-serif; margin:0; text-wrap:balance; }
+  p{ margin:0; }
+  a{ text-decoration:none; }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    color:var(--pink);
+    margin:0 0 18px;
+  }
+  .eyebrow.on-dark{ color:var(--pink-soft); }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding-left:24px; padding-right:24px; }
+  @media(min-width:768px){ .wrap{ padding-left:40px; padding-right:40px; } }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    background:rgba(247,241,234,.85);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(34,23,21,.1);
+  }
+  header .bar{ height:64px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; letter-spacing:-.01em; }
+  .brand img{ width:24px; height:24px; border-radius:50%; object-fit:cover; flex:none; }
+  .brand .dot{ color:var(--pink); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.14em;
+    padding:9px 16px; border:1px solid var(--wine); color:var(--ink);
+    transition:background-color .2s,color .2s;
+  }
+  .nav-cta:hover{ background:var(--wine); color:var(--cream); }
+
+  /* ---------- sections ---------- */
+  section{ padding:88px 0; }
+  .rule-top{ border-top:1px solid rgba(34,23,21,.1); }
+  .on-paper{ background:var(--paper); }
+  @media(min-width:768px){ section{ padding:120px 0; } }
+
+  .hero{ background:var(--wine); padding-top:168px; padding-bottom:96px; position:relative; overflow:hidden; }
+  @media(min-width:768px){ .hero{ padding-top:196px; padding-bottom:120px; } }
+  .hero .sidenote{
+    position:absolute; top:0; right:40px; transform-origin:top right; transform:rotate(90deg);
+    font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--pink-soft);
+    display:none;
+  }
+  @media(min-width:900px){ .hero .sidenote{ display:block; } }
+  .hero h1{
+    font-weight:700; font-size:clamp(2.4rem,7vw,3.7rem); line-height:1.08; letter-spacing:-.01em; max-width:760px;
+  }
+  .hero h1 .line{ color:var(--cream); }
+  .hero h1 .accent{ color:var(--pink); }
+  .hero p.lede{ margin-top:28px; max-width:520px; color:rgba(247,241,234,.8); font-size:15.5px; line-height:1.7; }
+  .cta-row{ margin-top:34px; display:flex; flex-wrap:wrap; gap:16px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.14em;
+    padding:15px 26px; transition:background-color .2s,color .2s; cursor:pointer; border:none;
+  }
+  .btn-primary{ background:var(--pink); color:var(--wine); }
+  .btn-primary:hover{ background:var(--cream); }
+  .btn-outline{ border:1px solid rgba(247,241,234,.3); color:var(--cream); }
+  .btn-outline:hover{ border-color:rgba(247,241,234,.6); }
+  .btn-final{ background:var(--pink); color:var(--wine); padding:17px 34px; font-size:12px; }
+  .btn-final:hover{ background:var(--cream); }
+
+  /* ---------- framed media placeholder ---------- */
+  .frame{ position:relative; }
+  .frame .plate{
+    position:relative; overflow:hidden; border:1px solid rgba(34,23,21,.25);
+    background:var(--sand);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  }
+  .frame.on-dark .plate{ border-color:rgba(247,241,234,.35); background:rgba(247,241,234,.08); }
+  .frame .plate::before,.frame .plate::after,.frame .corner-bl,.frame .corner-br{ content:""; position:absolute; width:12px; height:12px; z-index:2; }
+  .frame .plate::before{ top:0; left:0; border-top:1px solid var(--ink); border-left:1px solid var(--ink); }
+  .frame .plate::after{ top:0; right:0; border-top:1px solid var(--ink); border-right:1px solid var(--ink); }
+  .frame .corner-bl{ bottom:0; left:0; border-bottom:1px solid var(--ink); border-left:1px solid var(--ink); }
+  .frame .corner-br{ bottom:0; right:0; border-bottom:1px solid var(--ink); border-right:1px solid var(--ink); }
+  .frame.on-dark .plate::before,.frame.on-dark .plate::after,.frame.on-dark .corner-bl,.frame.on-dark .corner-br{ border-color:var(--cream); }
+  .ph-icon{ width:32px; height:32px; border:1px solid rgba(34,23,21,.4); transform:rotate(45deg); }
+  .ph-play{ width:46px; height:46px; border-radius:50%; border:1px solid rgba(34,23,21,.5); display:flex; align-items:center; justify-content:center; }
+  .frame.on-dark .ph-icon,.frame.on-dark .ph-play{ border-color:rgba(247,241,234,.55); }
+  .ph-play svg{ margin-left:2px; }
+  .ph-label{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(34,23,21,.55); }
+  .frame.on-dark .ph-label{ color:rgba(247,241,234,.65); }
+  .frame .caption{ margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--wine); }
+  .frame.on-dark .caption{ color:var(--pink-soft); }
+  .ratio-16-9{ aspect-ratio:16/9; }
+  .ratio-4-5{ aspect-ratio:4/5; }
+  .ratio-3-4{ aspect-ratio:3/4; }
+
+  /* ---------- problem ---------- */
+  .problem-block{ max-width:640px; }
+  .problem-block h2{ font-weight:600; font-size:clamp(1.5rem,3.4vw,2.1rem); line-height:1.32; }
+  .problem-block p{ margin-top:24px; color:rgba(34,23,21,.7); font-size:15px; line-height:1.75; }
+
+  /* ---------- methodfail ---------- */
+  .mf-head{ max-width:460px; }
+  .mf-head h2{ font-weight:600; font-size:clamp(1.5rem,3vw,1.9rem); line-height:1.3; }
+  .mf-grid{ margin-top:44px; display:grid; grid-template-columns:1fr; gap:22px 40px; }
+  @media(min-width:768px){ .mf-grid{ grid-template-columns:1fr 1fr; } }
+  .mf-item{ display:flex; gap:12px; }
+  .mf-item .x{ font-family:'IBM Plex Mono',monospace; color:var(--pink); font-size:13px; margin-top:2px; }
+  .mf-item p{ color:rgba(34,23,21,.78); font-size:14.5px; line-height:1.65; }
+
+  /* ---------- method steps ---------- */
+  .method-head{ max-width:480px; }
+  .method-head h2{ font-weight:600; font-size:clamp(1.7rem,3.6vw,2.3rem); line-height:1.25; }
+  .method-head p{ margin-top:18px; color:rgba(34,23,21,.7); font-size:14.5px; line-height:1.7; max-width:420px; }
+  .steps{ margin-top:52px; display:grid; grid-template-columns:1fr; gap:38px; }
+  @media(min-width:640px){ .steps{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:1024px){ .steps{ grid-template-columns:repeat(4,1fr); } }
+  .step .num{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pink); }
+  .step h3{ margin-top:12px; font-weight:600; font-size:17px; }
+  .step p{ margin-top:8px; color:rgba(34,23,21,.62); font-size:13.5px; line-height:1.65; }
+
+  /* ---------- results ---------- */
+  .results-head{ max-width:480px; }
+  .results-head h2{ font-weight:600; font-size:clamp(1.7rem,3.6vw,2.3rem); line-height:1.25; }
+  .ba-grid{ margin-top:46px; display:grid; grid-template-columns:1fr; gap:44px 32px; }
+  @media(min-width:640px){ .ba-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:1024px){ .ba-grid{ grid-template-columns:repeat(3,1fr); } }
+  .vid-grid{ margin-top:52px; display:grid; grid-template-columns:1fr; gap:36px; }
+  @media(min-width:768px){ .vid-grid{ grid-template-columns:1fr 1fr; } }
+  blockquote{ margin:0; border-left:1px solid rgba(75,22,22,.4); padding-left:22px; }
+  blockquote p{ font-family:'Poppins',sans-serif; font-weight:500; font-size:17px; line-height:1.55; }
+  blockquote cite{ display:block; margin-top:14px; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--wine); }
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:start; max-width:820px; }
+  @media(min-width:768px){ .about-grid{ grid-template-columns:1fr 1.35fr; } }
+  .about-grid h2{ font-weight:600; font-size:clamp(1.5rem,3.2vw,1.9rem); line-height:1.32; }
+  .about-grid p.body{ margin-top:22px; color:rgba(34,23,21,.7); font-size:14.5px; line-height:1.75; }
+  .about-grid .foot{ margin-top:18px; font-weight:600; font-size:13.5px; color:var(--wine); }
+
+  /* ---------- faq ---------- */
+  .faq-head h2{ font-weight:600; font-size:clamp(1.7rem,3.6vw,2.2rem); line-height:1.3; margin-bottom:6px; }
+  .faq-list{ margin-top:30px; max-width:680px; }
+  .faq-item{ border-bottom:1px solid rgba(34,23,21,.14); }
+  .faq-q{
+    width:100%; background:none; border:none; cursor:pointer; text-align:left;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    padding:24px 0; font-family:'Poppins',sans-serif; font-weight:500; font-size:17px; color:var(--ink);
+  }
+  .faq-icon{ flex:none; width:18px; height:18px; position:relative; }
+  .faq-icon::before,.faq-icon::after{ content:""; position:absolute; background:var(--wine); }
+  .faq-icon::before{ left:0; top:8px; width:18px; height:2px; }
+  .faq-icon::after{ left:8px; top:0; width:2px; height:18px; transition:transform .2s; }
+  .faq-item.open .faq-icon::after{ transform:scaleY(0); }
+  .faq-a{ display:none; flex-direction:column; gap:14px; padding:0 0 24px; max-width:620px; color:rgba(34,23,21,.7); font-size:14.5px; line-height:1.7; }
+  .faq-a strong{ color:var(--wine); }
+  .faq-item.open .faq-a{ display:flex; }
+  .seal{ display:block; }
+  .quote-empty{
+    margin-top:52px; padding-left:24px; border-left:1px solid rgba(34,23,21,.19);
+    font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:rgba(34,23,21,.4);
+  }
+
+  /* ---------- final cta ---------- */
+  .final{ background:var(--wine); text-align:center; }
+  .final .wrap{ max-width:680px; }
+  .final h2{ font-weight:700; font-size:clamp(1.9rem,5.4vw,3rem); line-height:1.22; }
+  .final h2 .l1{ color:var(--cream); }
+  .final h2 .l2{ color:var(--pink); }
+  .final .btn-final{ margin-top:38px; }
+  .social-block{ margin-top:60px; padding-top:38px; border-top:1px solid rgba(247,241,234,.15); }
+  .social-block p{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--pink-soft); margin-bottom:14px; }
+  .social-link{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--cream); }
+
+  footer{ background:var(--wine-deep); padding:36px 0; }
+  footer .wrap{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+  @media(min-width:640px){ footer .wrap{ flex-direction:row; justify-content:space-between; text-align:left; } }
+  footer .line1{ font-family:'Poppins',sans-serif; font-weight:600; font-size:14px; color:var(--cream); }
+  footer .line2{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.12em; color:rgba(247,241,234,.5); }
+
+  /* scroll reveal */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.shown{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  svg{ display:block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <span class="brand">
+      <img src="/logo.png" alt="Her Process">
+      Nina <span class="dot">·</span> Her Process
+    </span>
+    <a href="#rdv" class="nav-cta">Prendre rdv
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="position:relative;">
+    <div class="sidenote">Her Process — Lille</div>
+    <svg class="seal reveal" width="56" height="56" viewBox="0 0 40 40" fill="none" style="margin-bottom:24px;"><circle cx="20" cy="20" r="15.5" stroke="#F7F1EA" stroke-opacity=".55" stroke-width="1.5"/><path d="M35.2 20a15.2 15.2 0 0 0-4.4-10.7" stroke="#E8879C" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <p class="eyebrow on-dark reveal">Nina — coach sportive &amp; nutrition, Lille</p>
+    <h1 class="reveal"><span class="line">Coaching sportif privé pour femmes,</span> <span class="accent">à Lille.</span></h1>
+    <p class="lede reveal">Her Process, c'est un accompagnement complet avec Nina : entraînement sur mesure, suivi nutritionnel, application de suivi quotidien et ajustement chaque semaine — en studio privé à Lille (accessible depuis Villeneuve-d'Ascq, Roubaix et Tourcoing), en visio, ou via l'application, selon ce qui te convient.</p>
+    <p class="reveal" style="margin-top:22px;max-width:480px;font-family:'Poppins',sans-serif;font-weight:500;font-size:19px;color:var(--pink);">Il est temps de te donner le temps et l'amour que tu mérites.</p>
+    <div class="cta-row reveal">
+      <a href="#rdv" class="btn btn-primary">Réserver un bilan découverte
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- Bouton Me suivre : masqué tant que le compte Instagram n'est pas prêt.
+      <a href="#reseaux" class="btn btn-outline">Me suivre
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/></svg>
+      </a>
+      -->
+    </div>
+    <div class="frame on-dark reveal" style="margin-top:56px;">
+      <div class="plate ratio-16-9">
+        <div class="ph-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F7F1EA"><path d="M8 5v14l11-7z"/></svg></div>
+        <span class="ph-label">vidéo à ajouter</span>
+      </div>
+      <p class="caption">Présentation — Nina, fondatrice de Her Process</p>
+    </div>
+  </div>
+</section>
+
+<section class="rule-top">
+  <div class="wrap problem-block">
+    <p class="eyebrow reveal">Ce qui bloque, en général</p>
+    <h2 class="reveal">Tu as déjà essayé. Une salle, une appli, un coaching de groupe. Tu as tenu trois semaines.</h2>
+    <p class="reveal">Puis le travail, les enfants, un imprévu — et le programme est devenu intenable. Ce n'est pas un manque de motivation. C'est qu'un programme figé ne s'adapte jamais à une vraie vie de femme active à Lille.</p>
+  </div>
+</section>
+
+<section class="rule-top on-paper">
+  <div class="wrap">
+    <div class="mf-head reveal">
+      <p class="eyebrow">Pourquoi les méthodes classiques échouent</p>
+      <h2>Ce n'est pas toi le problème. C'est le format.</h2>
+    </div>
+    <div class="mf-grid">
+      <div class="mf-item reveal"><span class="x">×</span><p>Un programme figé sur 12 semaines, sans ajustement possible</p></div>
+      <div class="mf-item reveal"><span class="x">×</span><p>Un coaching de groupe qui ignore ton historique et tes contraintes réelles</p></div>
+      <div class="mf-item reveal"><span class="x">×</span><p>Une application de fitness sans coach humain derrière pour l'adapter</p></div>
+      <div class="mf-item reveal"><span class="x">×</span><p>Un objectif esthétique déconnecté de ta vie et de ton quotidien</p></div>
+      <div class="mf-item reveal"><span class="x">×</span><p>Comme si le sport suffisait à lui seul : un programme d'entraînement livré sans réel accompagnement nutritionnel personnalisé à côté</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rule-top">
+  <div class="wrap">
+    <div class="method-head reveal">
+      <p class="eyebrow">La Her Process Method</p>
+      <h2>Un système, pas un programme générique.</h2>
+      <p>Her Process n'est pas qu'un nom : c'est une méthode structurée autour d'un vrai suivi, entraînement et nutrition compris.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">01</span><h3>Analyse</h3><p>Habitudes, contraintes, historique sportif et alimentaire réels — pas un questionnaire générique.</p></div>
+      <div class="step reveal"><span class="num">02</span><h3>Programme sur-mesure</h3><p>Entraînement et plan nutritionnel construits ensemble, en studio à Lille, en visio ou via l'application — pas empilés.</p></div>
+      <div class="step reveal"><span class="num">03</span><h3>Suivi quotidien</h3><p>Repas, séances et ressenti suivis chaque jour via l'application Her Process.</p></div>
+      <div class="step reveal"><span class="num">04</span><h3>Ajustement hebdomadaire</h3><p>Le programme évolue chaque semaine selon tes résultats réels, jamais figé sur 12 semaines.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rule-top on-paper">
+  <div class="wrap">
+    <div class="results-head reveal">
+      <p class="eyebrow">Résultats</p>
+      <h2>Ce que la méthode change, au quotidien.</h2>
+    </div>
+
+    <div class="ba-grid">
+      <div class="frame reveal">
+        <div class="plate ratio-4-5"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
+        <p class="caption">Fig. 01 — Marie, 4 mois — reprise de sport encadrée après une grossesse</p>
+      </div>
+      <div class="frame reveal">
+        <div class="plate ratio-4-5"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
+        <p class="caption">Fig. 02 — Sarah, 8 mois — sortie d'un cycle de restriction et de reprises alimentaires</p>
+      </div>
+      <div class="frame reveal">
+        <div class="plate ratio-4-5"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
+        <p class="caption">Fig. 03 — Camille, 6 mois — programme ajusté chaque semaine selon son emploi du temps</p>
+      </div>
+    </div>
+
+    <div class="vid-grid">
+      <div class="frame reveal">
+        <div class="plate ratio-16-9"><div class="ph-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#221715"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-label">vidéo à ajouter</span></div>
+        <p class="caption">Témoignage — Sarah, cliente depuis 8 mois</p>
+      </div>
+      <div class="frame reveal">
+        <div class="plate ratio-16-9"><div class="ph-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#221715"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-label">vidéo à ajouter</span></div>
+        <p class="caption">Témoignage — Camille, cliente depuis 6 mois</p>
+      </div>
+    </div>
+
+    <p class="quote-empty reveal">Citations clientes à ajouter</p>
+  </div>
+</section>
+
+<section class="rule-top">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="frame reveal">
+        <div class="plate ratio-3-4"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
+        <p class="caption">Nina, fondatrice de Her Process</p>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Pourquoi Her Process</p>
+        <h2>Une méthode construite par une ancienne ingénieure d'affaires, pas une coach motivation.</h2>
+        <p class="body">Nina a passé cinq ans comme ingénieure d'affaires avant de perdre plus de 30 kg — seule d'abord, puis accompagnée par un coach quand la progression a stagné. C'est ce cadre régulier qui a transformé le sport en indispensable plutôt qu'en contrainte. Son entourage a commencé à lui demander conseil ; elle a d'abord coaché par bouche-à-oreille, avant de quitter son poste pour se former et fonder Her Process.</p>
+        <p class="body">Elle a aussi développé elle-même l'application de suivi que ses clientes utilisent chaque jour. Elle ne vend pas un programme standard — elle construit un système propre à chaque cliente, avec la rigueur d'une méthode plutôt que l'énergie d'un coaching motivation classique.</p>
+        <p class="foot">Le sport comme outil, pas comme punition — mais toujours au service d'un résultat mesurable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rule-top on-paper">
+  <div class="wrap">
+    <div class="faq-head reveal">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2>Coaching sportif à Lille — ce qu'on te demande le plus.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Pourquoi avoir créé Her Process ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>J'ai créé <strong>Her Process</strong> pour offrir aux femmes l'accompagnement que j'aurais aimé avoir au début de ma propre transformation.</p>
+          <p>Comme beaucoup de femmes, j'ai connu les régimes, les reprises de poids, l'effet yoyo et cette sensation de toujours recommencer à zéro. À vouloir aller trop vite, j'ai fini par détériorer ma relation avec l'alimentation et avec mon corps.</p>
+          <p>Ce n'est qu'en adoptant une approche plus durable que j'ai réussi à perdre <strong>plus de 30 kg</strong> et, surtout, à ne plus revivre ce cycle.</p>
+          <p>Aujourd'hui, Her Process est né de cette expérience, mais aussi de mon expertise de coach. Mon objectif n'est pas de vous proposer un programme de plus, mais de vous transmettre une méthode qui vous permettra de construire des habitudes durables et d'obtenir des résultats que vous pourrez réellement conserver.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">En quoi Her Process est-il différent d'un coaching sportif classique ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Chez <strong>Her Process</strong>, vous ne venez pas simplement faire une séance de sport.</p>
+          <p>Je vous accompagne dans votre transformation en prenant en compte l'ensemble de votre quotidien : votre entraînement, votre alimentation, votre mode de vie, votre motivation et vos habitudes.</p>
+          <p>Parce que je suis moi-même passée par ce parcours, je sais que les difficultés ne se trouvent pas uniquement dans la salle de sport. Les écarts, les périodes de doute, le manque de temps ou les baisses de motivation font partie du processus.</p>
+          <p>Mon objectif n'est pas que vous dépendiez de moi. Mon objectif est de vous donner les connaissances, les habitudes et la confiance nécessaires pour devenir progressivement autonome.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Est-ce que Her Process est adapté si je débute complètement ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Oui.</p>
+          <p>La majorité des femmes que j'accompagne ne sont pas sportives lorsqu'elles commencent. Chaque accompagnement est entièrement personnalisé selon votre niveau, votre condition physique, vos éventuelles douleurs et vos objectifs.</p>
+          <p>Vous n'avez pas besoin d'être « prête ». Mon rôle est justement de vous accompagner là où vous en êtes aujourd'hui.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Que se passe-t-il entre les séances ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>C'est souvent entre les séances que tout se joue.</p>
+          <p>Vous ne restez jamais seule face à vos questions ou à vos difficultés. Grâce au suivi régulier et à l'application Her Process, nous ajustons ensemble votre alimentation, votre entraînement et vos habitudes lorsque cela est nécessaire.</p>
+          <p>L'accompagnement ne s'arrête pas à la porte du studio. Il fait partie de votre quotidien.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Où se déroulent les séances ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>La majorité des séances se déroulent dans mon studio privé à Lille, un espace intimiste pensé pour permettre à chaque femme de s'entraîner en toute sérénité — facilement accessible depuis Villeneuve-d'Ascq, Roubaix, Tourcoing, Lomme, Loos, Marcq-en-Barœul, Mons-en-Barœul ou Saint-André-lez-Lille.</p>
+          <p>Selon vos besoins, certaines séances peuvent également être réalisées en salle de sport afin de vous apprendre à utiliser les machines, gagner en autonomie et prendre confiance dans cet environnement.</p>
+          <p>Si vous habitez plus loin ou que vous ne pouvez pas vous déplacer, un accompagnement en visioconférence est également possible afin de bénéficier du même suivi personnalisé où que vous soyez.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Combien de temps faut-il pour voir des résultats ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Les premières évolutions se ressentent souvent rapidement : davantage d'énergie, une meilleure condition physique, un meilleur sommeil ou une relation plus sereine avec l'alimentation.</p>
+          <p>Les transformations visibles dépendent ensuite de votre régularité, de votre implication et de votre objectif.</p>
+          <p>Chez Her Process, nous recherchons des résultats durables, pas des solutions rapides.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Est-ce que vous accompagnez uniquement la perte de poids ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Non.</p>
+          <p>Certaines femmes souhaitent perdre du poids, d'autres veulent développer leur masse musculaire, tonifier leur silhouette, retrouver confiance en elles, améliorer leur condition physique ou simplement reprendre soin de leur santé.</p>
+          <p>Chaque accompagnement est construit autour de votre objectif personnel.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Puis-je être accompagnée si j'ai des douleurs ou une ancienne blessure ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Oui, sous réserve qu'il n'existe aucune contre-indication médicale.</p>
+          <p>Les séances sont adaptées à votre situation afin de vous permettre de progresser en toute sécurité. Si nécessaire, je travaille également en complément des recommandations de votre professionnel de santé.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Le coaching est-il réservé aux femmes ?<span class="faq-icon"></span></button>
+        <div class="faq-a">
+          <p>Oui.</p>
+          <p>Her Process est un accompagnement exclusivement dédié aux femmes.</p>
+          <p>J'ai souhaité créer un environnement dans lequel chacune peut évoluer librement, se sentir écoutée, progresser sans jugement et retrouver confiance en elle, quel que soit son point de départ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rdv" class="rule-top final">
+  <div class="wrap">
+    <svg class="seal reveal" width="44" height="44" viewBox="0 0 40 40" fill="none" style="margin:0 auto 20px;"><circle cx="20" cy="20" r="15.5" stroke="#F7F1EA" stroke-opacity=".55" stroke-width="1.5"/><path d="M35.2 20a15.2 15.2 0 0 0-4.4-10.7" stroke="#E8879C" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <p class="eyebrow on-dark reveal" style="display:inline-block;">On commence ?</p>
+    <h2 class="reveal"><span class="l1">Ton bilan découverte avec ta coach sportive</span><br><span class="l2">à Lille.</span></h2>
+    <a href="/decouverte.html" class="btn btn-final reveal">Remplir le questionnaire
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+    <!-- Bloc Instagram : masqué tant que le compte n'est pas prêt.
+    <div id="reseaux" class="social-block reveal">
+      <p>Ou suis Nina au quotidien</p>
+      <a href="https://instagram.com/TONCOMPTE" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        @toncompte
+      </a>
+    </div>
+    -->
+    <div id="reseaux"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="line1">Nina · Her Process — Coach sportive Lille</span>
+    <p class="line2">Coaching sportif &amp; nutritionnel privé pour femmes — Lille &amp; métropole</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('shown'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('shown'); });
+  }
+</script>
+</body>
+</html>
