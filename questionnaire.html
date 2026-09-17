@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sport, alimentation & toi — The Process by Nina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #FBF6F2;
+    --surface: #FFFFFF;
+    --surface-2: #FCEEE8;
+    --ink: #2B1B22;
+    --ink-soft: #7A6670;
+    --accent: #C6425E;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #F6D9DE;
+    --gold: #B9852A;
+    --border: #E9DAD5;
+    --error: #B3261E;
+    --shadow: 0 20px 40px -24px rgba(43,27,34,0.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #191115;
+      --surface: #241820;
+      --surface-2: #2E1E27;
+      --ink: #F5EAEE;
+      --ink-soft: #C7AEB8;
+      --accent: #E8748C;
+      --accent-ink: #241018;
+      --accent-soft: #3D2530;
+      --gold: #E0AC55;
+      --border: #3B2A32;
+      --shadow: 0 20px 40px -24px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #191115;
+    --surface: #241820;
+    --surface-2: #2E1E27;
+    --ink: #F5EAEE;
+    --ink-soft: #C7AEB8;
+    --accent: #E8748C;
+    --accent-ink: #241018;
+    --accent-soft: #3D2530;
+    --gold: #E0AC55;
+    --border: #3B2A32;
+    --shadow: 0 20px 40px -24px rgba(0,0,0,0.6);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Karla', system-ui, -apple-system, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.display{
+    font-family:'Fraunces', Georgia, serif;
+    text-wrap:balance;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 20px 64px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Progress */
+  .progress-shell{
+    position:sticky;
+    top:0;
+    z-index:5;
+    background:linear-gradient(var(--bg) 82%, transparent);
+    padding:16px 0 10px;
+    margin:0 -20px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .progress-label{
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+  }
+  .progress-track{
+    height:4px;
+    border-radius:4px;
+    background:var(--border);
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius:4px;
+    transition:width .4s cubic-bezier(.4,0,.2,1);
+    width:0%;
+  }
+
+  /* Steps */
+  .steps{ flex:1; padding-top:8px; }
+  .step{ display:none; animation:rise .45s cubic-bezier(.16,1,.3,1); }
+  .step.active{ display:block; }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .step{ animation:none; }
+  }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin:28px 0 10px;
+  }
+  .step h1{ font-size:clamp(26px,6vw,34px); margin:0 0 14px; }
+  .step h2{ font-size:clamp(21px,5vw,25px); margin:36px 0 6px; }
+  .intro-text{ color:var(--ink-soft); font-size:16px; margin:0 0 6px; }
+  .intro-text + .intro-text{ margin-top:14px; }
+  .signature{ font-family:'Fraunces', Georgia, serif; font-style:italic; color:var(--ink-soft); margin-top:22px; font-size:16px; }
+
+  .field{ margin:26px 0; }
+  .q-label{ font-weight:600; font-size:16.5px; margin-bottom:4px; }
+  .q-hint{ color:var(--ink-soft); font-size:13.5px; margin-bottom:12px; }
+  .q-label + .options, .q-label + .text-input, .q-label + .q-hint{ margin-top:12px; }
+
+  .options{ display:flex; flex-wrap:wrap; gap:9px; }
+  .opt{
+    position:relative;
+  }
+  .opt input{
+    position:absolute;
+    opacity:0;
+    inset:0;
+    width:100%; height:100%;
+    margin:0;
+    cursor:pointer;
+  }
+  .opt span{
+    display:inline-flex;
+    align-items:center;
+    padding:10px 16px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    font-size:14.5px;
+    color:var(--ink);
+    transition:border-color .15s, background .15s, color .15s, transform .1s;
+    user-select:none;
+  }
+  .opt input:checked + span{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--accent-ink);
+    font-weight:600;
+  }
+  .opt input:focus-visible + span{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .opt:active span{ transform:scale(.98); }
+
+  .text-input, textarea, input[type="email"], input[type="tel"], input[type="text"]{
+    width:100%;
+    font-family:inherit;
+    font-size:16px;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:13px 15px;
+  }
+  .text-input:focus, textarea:focus, input:focus{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+  }
+  textarea{ resize:vertical; min-height:92px; }
+
+  .autre-input{ margin-top:9px; display:none; }
+  .autre-input.show{ display:block; }
+
+  .conditional{ display:none; padding-left:16px; border-left:2px solid var(--accent-soft); margin-top:-4px; }
+  .conditional.show{ display:block; }
+
+  .precious{
+    background:var(--surface-2);
+    border-radius:16px;
+    padding:20px 20px 6px;
+    border:1px solid var(--border);
+  }
+  .precious .q-label{ font-family:'Fraunces', Georgia, serif; font-size:18.5px; font-weight:600; }
+
+  .nav{
+    display:flex;
+    gap:12px;
+    margin-top:38px;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+  }
+  .btn{
+    appearance:none;
+    border:none;
+    border-radius:999px;
+    font-family:inherit;
+    font-size:15.5px;
+    font-weight:700;
+    padding:14px 26px;
+    cursor:pointer;
+    transition:transform .1s, opacity .15s, background .15s;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:var(--accent-ink);
+    box-shadow:var(--shadow);
+    flex:1;
+  }
+  .btn-primary:hover{ opacity:.92; }
+  .btn-primary:active{ transform:scale(.99); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink-soft);
+    border:1px solid var(--border);
+  }
+  .btn-ghost:hover{ background:var(--surface); }
+  .btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+  .contact-grid{ display:grid; gap:14px; margin-top:26px; }
+  .contact-grid label{ font-size:13.5px; color:var(--ink-soft); display:block; margin-bottom:6px; }
+  .optional-tag{ font-weight:400; font-style:italic; }
+
+  .thanks-icon{ font-size:38px; margin-bottom:6px; }
+  .status-line{ font-size:14px; color:var(--ink-soft); margin-top:14px; }
+  .status-line.error{ color:var(--error); }
+
+  footer.hint{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    padding:26px 0 0;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="progress-shell" id="progressShell" style="display:none;">
+    <div class="progress-label">
+      <span id="progressText">Étape 1 sur 6</span>
+      <span id="progressSection"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <form class="steps" id="form" action="https://formspree.io/f/xnpnqbrd" method="POST" novalidate>
+
+    <!-- STEP 0 : INTRO -->
+    <section class="step active" data-step="0">
+      <div class="eyebrow">Sport · alimentation · bien-être</div>
+      <h1>Ton quotidien de femme active à Abidjan</h1>
+      <p class="intro-text">Je suis coach sportive et je travaille actuellement sur un projet d'accompagnement pensé pour les femmes vivant à Abidjan.</p>
+      <p class="intro-text">Avant de construire cette offre, j'aimerais mieux comprendre ton quotidien, tes objectifs et les difficultés que tu rencontres concernant le sport, l'alimentation et ton bien-être.</p>
+      <p class="intro-text">Ça prend environ 3 minutes. Merci pour ton aide 🤍</p>
+      <p class="signature">— Nina</p>
+
+      <div class="contact-grid">
+        <div>
+          <label for="prenom">Prénom <span class="optional-tag">(facultatif)</span></label>
+          <input type="text" id="prenom" name="prenom" autocomplete="given-name" placeholder="Ton prénom">
+        </div>
+        <div>
+          <label for="email">E-mail <span class="optional-tag">(facultatif)</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="ton@email.com">
+        </div>
+        <div>
+          <label for="tel">Téléphone / WhatsApp <span class="optional-tag">(facultatif)</span></label>
+          <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+225 07 00 00 00 00">
+        </div>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-primary" data-next>Commencer →</button>
+      </div>
+    </section>
+
+    <!-- STEP 1 : TOI -->
+    <section class="step" data-step="1" data-section="Toi">
+      <h2>Toi</h2>
+
+      <div class="field">
+        <div class="q-label">1. Quel âge as-tu ?</div>
+        <div class="options" data-group="q1">
+          <label class="opt"><input type="radio" name="q1" value="Moins de 25 ans"><span>Moins de 25 ans</span></label>
+          <label class="opt"><input type="radio" name="q1" value="25–29"><span>25–29</span></label>
+          <label class="opt"><input type="radio" name="q1" value="30–34"><span>30–34</span></label>
+          <label class="opt"><input type="radio" name="q1" value="35–39"><span>35–39</span></label>
+          <label class="opt"><input type="radio" name="q1" value="40–49"><span>40–49</span></label>
+          <label class="opt"><input type="radio" name="q1" value="50+"><span>50+</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="q-label">2. Dans quelle commune ou quel quartier d'Abidjan vis-tu ?</div>
+        <input class="text-input" type="text" name="q2" placeholder="Ex : Cocody, Yopougon, Marcory…">
+      </div>
+
+      <div class="field">
+        <div class="q-label">3. Quelle est ta situation professionnelle ?</div>
+        <div class="options" data-group="q3">
+          <label class="opt"><input type="radio" name="q3" value="Salariée"><span>Salariée</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Cadre ou manager"><span>Cadre ou manager</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Entrepreneure"><span>Entrepreneure</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Profession libérale"><span>Profession libérale</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Étudiante"><span>Étudiante</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Sans activité actuellement"><span>Sans activité actuellement</span></label>
+          <label class="opt"><input type="radio" name="q3" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q3_autre" placeholder="Précise…">
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="button" class="btn btn-primary" data-next>Continuer</button>
+      </div>
+    </section>
+
+    <!-- STEP 2 : ACTIVITE PHYSIQUE -->
+    <section class="step" data-step="2" data-section="Activité physique">
+      <h2>Ton activité physique aujourd'hui</h2>
+
+      <div class="field">
+        <div class="q-label">4. Quel est ton principal objectif concernant ton corps ou ta forme ?</div>
+        <div class="options" data-group="q4">
+          <label class="opt"><input type="radio" name="q4" value="Perdre du poids"><span>Perdre du poids</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Me raffermir et redessiner ma silhouette"><span>Me raffermir et redessiner ma silhouette</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Prendre du poids ou du muscle"><span>Prendre du poids ou du muscle</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Me remettre au sport"><span>Me remettre au sport</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Améliorer ma condition physique"><span>Améliorer ma condition physique</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Me sentir mieux dans mon corps"><span>Me sentir mieux dans mon corps</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Préserver ma santé"><span>Préserver ma santé</span></label>
+          <label class="opt"><input type="radio" name="q4" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q4_autre" placeholder="Précise…">
+      </div>
+
+      <div class="field">
+        <div class="q-label">5. Fais-tu actuellement du sport ?</div>
+        <div class="options" data-group="q5">
+          <label class="opt"><input type="radio" name="q5" value="Oui régulièrement (3 fois/semaine ou +)"><span>Oui régulièrement (3×/sem ou +)</span></label>
+          <label class="opt"><input type="radio" name="q5" value="Oui occasionnellement (1–2 fois/semaine)"><span>Oui occasionnellement (1–2×/sem)</span></label>
+          <label class="opt"><input type="radio" name="q5" value="Très rarement"><span>Très rarement</span></label>
+          <label class="opt"><input type="radio" name="q5" value="Non"><span>Non</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="q-label">6. Si tu fais du sport, où pratiques-tu principalement ?</div>
+        <div class="options" data-group="q6">
+          <label class="opt"><input type="radio" name="q6" value="Salle de sport"><span>Salle de sport</span></label>
+          <label class="opt"><input type="radio" name="q6" value="À la maison"><span>À la maison</span></label>
+          <label class="opt"><input type="radio" name="q6" value="Avec un coach"><span>Avec un coach</span></label>
+          <label class="opt"><input type="radio" name="q6" value="Cours collectifs"><span>Cours collectifs</span></label>
+          <label class="opt"><input type="radio" name="q6" value="Sport en extérieur"><span>Sport en extérieur</span></label>
+          <label class="opt"><input type="radio" name="q6" value="Autre"><span>Autre</span></label>
+          <label class="opt"><input type="radio" name="q6" value="Je ne pratique pas actuellement"><span>Je ne pratique pas actuellement</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q6_autre" placeholder="Précise…">
+      </div>
+
+      <div class="field conditional" data-show-if-field="q6" data-show-if-values="Salle de sport|Avec un coach|Cours collectifs">
+        <div class="q-label">Combien de temps de trajet as-tu entre ton domicile et la salle de sport ?</div>
+        <div class="options" data-group="q6b">
+          <label class="opt"><input type="radio" name="q6b" value="Moins de 10 min"><span>Moins de 10 min</span></label>
+          <label class="opt"><input type="radio" name="q6b" value="10–20 min"><span>10–20 min</span></label>
+          <label class="opt"><input type="radio" name="q6b" value="20–30 min"><span>20–30 min</span></label>
+          <label class="opt"><input type="radio" name="q6b" value="30–45 min"><span>30–45 min</span></label>
+          <label class="opt"><input type="radio" name="q6b" value="Plus de 45 min"><span>Plus de 45 min</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="q-label">7. Qu'est-ce qui t'empêche le plus d'être aussi régulière que tu le souhaiterais ?</div>
+        <div class="q-hint">Plusieurs réponses possibles</div>
+        <div class="options" data-group="q7">
+          <label class="opt"><input type="checkbox" name="q7" value="Manque de temps"><span>Manque de temps</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Embouteillages ou déplacements"><span>Embouteillages ou déplacements</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Fatigue après le travail"><span>Fatigue après le travail</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Manque de motivation"><span>Manque de motivation</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Prix des salles"><span>Prix des salles</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Je ne sais pas quoi faire"><span>Je ne sais pas quoi faire</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Difficulté à rester régulière seule"><span>Difficulté à rester régulière seule</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Contraintes familiales"><span>Contraintes familiales</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Je n'aime pas particulièrement les salles de sport"><span>Je n'aime pas particulièrement les salles de sport</span></label>
+          <label class="opt"><input type="checkbox" name="q7" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q7_autre" placeholder="Précise…">
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="button" class="btn btn-primary" data-next>Continuer</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 : PARCOURS -->
+    <section class="step" data-step="3" data-section="Ton parcours">
+      <h2>Ton parcours</h2>
+
+      <div class="field">
+        <div class="q-label">8. As-tu déjà essayé de perdre du poids, prendre du poids ou transformer ta silhouette ?</div>
+        <div class="options" data-group="q8">
+          <label class="opt"><input type="radio" name="q8" value="Oui, plusieurs fois"><span>Oui, plusieurs fois</span></label>
+          <label class="opt"><input type="radio" name="q8" value="Oui, une fois"><span>Oui, une fois</span></label>
+          <label class="opt"><input type="radio" name="q8" value="Non"><span>Non</span></label>
+        </div>
+      </div>
+
+      <div class="field conditional" data-show-if-field="q8" data-show-if-values="Oui, plusieurs fois|Oui, une fois">
+        <div class="q-label">9. Si oui, qu'as-tu déjà essayé ?</div>
+        <div class="q-hint">Plusieurs réponses possibles</div>
+        <div class="options" data-group="q9">
+          <label class="opt"><input type="checkbox" name="q9" value="Salle de sport"><span>Salle de sport</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Coach sportif"><span>Coach sportif</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Régime alimentaire"><span>Régime alimentaire</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Programme trouvé sur Internet"><span>Programme trouvé sur Internet</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Application fitness"><span>Application fitness</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Jeûne ou restriction alimentaire"><span>Jeûne ou restriction alimentaire</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Compléments ou produits minceur"><span>Compléments ou produits minceur</span></label>
+          <label class="opt"><input type="checkbox" name="q9" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q9_autre" placeholder="Précise…">
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="button" class="btn btn-primary" data-next>Continuer</button>
+      </div>
+    </section>
+
+    <!-- STEP 4 : ALIMENTATION -->
+    <section class="step" data-step="4" data-section="Alimentation">
+      <h2>Alimentation</h2>
+
+      <div class="field">
+        <div class="q-label">10. Quelle est aujourd'hui ta plus grande difficulté avec l'alimentation ?</div>
+        <div class="q-hint">Plusieurs réponses possibles</div>
+        <div class="options" data-group="q10">
+          <label class="opt"><input type="checkbox" name="q10" value="Savoir quoi manger"><span>Savoir quoi manger</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Gérer les quantités"><span>Gérer les quantités</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Les repas à l'extérieur"><span>Les repas à l'extérieur</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Les envies et grignotages"><span>Les envies et grignotages</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Adapter les plats ivoiriens à mon objectif"><span>Adapter les plats ivoiriens à mon objectif</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Manger suffisamment de protéines"><span>Manger suffisamment de protéines</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Trouver des aliments adaptés facilement à Abidjan"><span>Trouver des aliments adaptés facilement à Abidjan</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Manque de temps pour cuisiner"><span>Manque de temps pour cuisiner</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Tenir dans la durée"><span>Tenir dans la durée</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Je n'ai pas de difficulté particulière"><span>Je n'ai pas de difficulté particulière</span></label>
+          <label class="opt"><input type="checkbox" name="q10" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q10_autre" placeholder="Précise…">
+      </div>
+
+      <div class="field">
+        <div class="q-label">11. Pour atteindre ton objectif, serais-tu prête à modifier ton alimentation sans abandonner les plats et aliments que tu aimes ?</div>
+        <div class="options" data-group="q11">
+          <label class="opt"><input type="radio" name="q11" value="Oui, complètement"><span>Oui, complètement</span></label>
+          <label class="opt"><input type="radio" name="q11" value="Oui, si ça reste simple"><span>Oui, si ça reste simple</span></label>
+          <label class="opt"><input type="radio" name="q11" value="Peut-être"><span>Peut-être</span></label>
+          <label class="opt"><input type="radio" name="q11" value="Non"><span>Non</span></label>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="button" class="btn btn-primary" data-next>Continuer</button>
+      </div>
+    </section>
+
+    <!-- STEP 5 : ACCOMPAGNEMENT IDEAL -->
+    <section class="step" data-step="5" data-section="Ton accompagnement idéal">
+      <h2>Ton accompagnement idéal</h2>
+
+      <div class="field">
+        <div class="q-label">12. Si tu pouvais être accompagnée par une coach sans avoir à te déplacer, qu'est-ce qui serait le PLUS important pour toi ?</div>
+        <div class="options" data-group="q12">
+          <label class="opt"><input type="radio" name="q12" value="Un programme sportif adapté à mon objectif"><span>Un programme sportif adapté à mon objectif</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Savoir exactement quoi manger"><span>Savoir exactement quoi manger</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Pouvoir manger selon mes habitudes ivoiriennes"><span>Pouvoir manger selon mes habitudes ivoiriennes</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Être suivie et motivée régulièrement"><span>Être suivie et motivée régulièrement</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Pouvoir poser mes questions à une coach"><span>Pouvoir poser mes questions à une coach</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Avoir des rendez-vous en visio"><span>Avoir des rendez-vous en visio</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Suivre mes progrès dans une application"><span>Suivre mes progrès dans une application</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Pouvoir m'entraîner chez moi"><span>Pouvoir m'entraîner chez moi</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Pouvoir m'entraîner en salle"><span>Pouvoir m'entraîner en salle</span></label>
+          <label class="opt"><input type="radio" name="q12" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q12_autre" placeholder="Précise…">
+      </div>
+
+      <div class="field">
+        <div class="q-label">13. Qu'est-ce qui pourrait te freiner dans l'idée d'un coaching 100% à distance ?</div>
+        <div class="options" data-group="q13">
+          <label class="opt"><input type="radio" name="q13" value="Peur de manquer de motivation"><span>Peur de manquer de motivation</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Préférence pour un coach physiquement présent"><span>Préférence pour un coach physiquement présent</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Doute sur les résultats à distance"><span>Doute sur les résultats à distance</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Difficulté avec les applications"><span>Difficulté avec les applications</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Prix"><span>Prix</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Besoin qu'on corrige mes mouvements"><span>Besoin qu'on corrige mes mouvements</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Rien, le format me convient"><span>Rien, le format me convient</span></label>
+          <label class="opt"><input type="radio" name="q13" value="Autre"><span>Autre</span></label>
+        </div>
+        <input class="text-input autre-input" type="text" name="q13_autre" placeholder="Précise…">
+      </div>
+
+      <div class="field">
+        <div class="q-label">14. Pour un accompagnement personnalisé avec programme sportif, suivi régulier, conseils alimentaires et application, quel budget mensuel te semblerait envisageable ?</div>
+        <div class="options" data-group="q14">
+          <label class="opt"><input type="radio" name="q14" value="Moins de 20 000 FCFA"><span>Moins de 20 000 FCFA</span></label>
+          <label class="opt"><input type="radio" name="q14" value="20 000–30 000 FCFA"><span>20 000–30 000</span></label>
+          <label class="opt"><input type="radio" name="q14" value="30 000–45 000 FCFA"><span>30 000–45 000</span></label>
+          <label class="opt"><input type="radio" name="q14" value="45 000–60 000 FCFA"><span>45 000–60 000</span></label>
+          <label class="opt"><input type="radio" name="q14" value="60 000–80 000 FCFA"><span>60 000–80 000</span></label>
+          <label class="opt"><input type="radio" name="q14" value="Plus de 80 000 FCFA"><span>Plus de 80 000 FCFA</span></label>
+          <label class="opt"><input type="radio" name="q14" value="Je ne sais pas"><span>Je ne sais pas</span></label>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="button" class="btn btn-primary" data-next>Continuer</button>
+      </div>
+    </section>
+
+    <!-- STEP 6 : POUR ALLER PLUS LOIN -->
+    <section class="step" data-step="6" data-section="Pour aller plus loin">
+      <h2>Pour aller plus loin</h2>
+
+      <div class="field precious">
+        <div class="q-label">15. Si tu pouvais résoudre UNE seule difficulté concernant ton corps, ton alimentation ou ta forme aujourd'hui, laquelle serait-ce ?</div>
+        <textarea name="q15" placeholder="Réponds avec tes propres mots…"></textarea>
+      </div>
+
+      <div class="field">
+        <div class="q-label">16. Serais-tu d'accord pour échanger 10–15 minutes avec moi afin de m'aider à mieux comprendre ton expérience ?</div>
+        <div class="options" data-group="q16">
+          <label class="opt"><input type="radio" name="q16" value="Oui"><span>Oui</span></label>
+          <label class="opt"><input type="radio" name="q16" value="Non"><span>Non</span></label>
+        </div>
+      </div>
+      <div class="field conditional" data-show-if-field="q16" data-show-if-values="Oui">
+        <div class="q-label">Ton WhatsApp ou Instagram</div>
+        <input class="text-input" type="text" name="q16_contact" placeholder="@ton_instagram ou numéro WhatsApp">
+      </div>
+
+      <div class="field">
+        <div class="q-label">17. Je recherche également quelques femmes à Abidjan pour découvrir en avant-première <em>The Process by Nina</em>. Souhaites-tu recevoir les informations lors du lancement ?</div>
+        <div class="options" data-group="q17">
+          <label class="opt"><input type="radio" name="q17" value="Oui"><span>Oui</span></label>
+          <label class="opt"><input type="radio" name="q17" value="Non"><span>Non</span></label>
+        </div>
+      </div>
+      <div class="field conditional" data-show-if-field="q17" data-show-if-values="Oui">
+        <div class="q-label">Ton WhatsApp ou e-mail</div>
+        <input class="text-input" type="text" name="q17_contact" placeholder="WhatsApp ou e-mail">
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-prev>← Retour</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer mes réponses</button>
+      </div>
+      <div class="status-line" id="statusLine"></div>
+    </section>
+
+    <!-- STEP 7 : MERCI -->
+    <section class="step" data-step="7">
+      <div class="thanks-icon">🤍</div>
+      <h1>Merci infiniment</h1>
+      <p class="intro-text">Tes réponses viennent d'être envoyées. Elles vont m'aider à construire un accompagnement qui correspond vraiment à ton quotidien.</p>
+      <p class="signature">— Nina</p>
+    </section>
+
+  </form>
+
+  <footer class="hint">Questionnaire anonyme et confidentiel · The Process by Nina</footer>
+</div>
+
+<script>
+(function(){
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var totalNumbered = 6; // steps 1..6 carry the progress bar
+  var current = 0;
+  var form = document.getElementById('form');
+  var progressShell = document.getElementById('progressShell');
+  var progressFill = document.getElementById('progressFill');
+  var progressText = document.getElementById('progressText');
+  var progressSection = document.getElementById('progressSection');
+
+  function getValues(name){
+    var nodes = form.querySelectorAll('[name="' + name + '"]:checked');
+    return Array.prototype.map.call(nodes, function(n){ return n.value; });
+  }
+
+  function updateConditionals(){
+    var blocks = form.querySelectorAll('[data-show-if-field]');
+    Array.prototype.forEach.call(blocks, function(block){
+      var field = block.getAttribute('data-show-if-field');
+      var wanted = block.getAttribute('data-show-if-values').split('|');
+      var cur = getValues(field);
+      var show = cur.some(function(v){ return wanted.indexOf(v) !== -1; });
+      block.classList.toggle('show', show);
+      if (!show){
+        Array.prototype.forEach.call(block.querySelectorAll('input, textarea'), function(i){
+          if (i.type === 'radio' || i.type === 'checkbox') i.checked = false;
+          else i.value = '';
+        });
+      }
+    });
+  }
+
+  function updateAutreFields(){
+    Array.prototype.forEach.call(form.querySelectorAll('.field'), function(field){
+      var autreChecked = field.querySelector('input[value="Autre"]:checked');
+      var autreInput = field.querySelector('.autre-input');
+      if (!autreInput) return;
+      autreInput.classList.toggle('show', !!autreChecked);
+      if (!autreChecked) autreInput.value = '';
+    });
+  }
+
+  form.addEventListener('change', function(){
+    updateConditionals();
+    updateAutreFields();
+  });
+
+  function showStep(i){
+    steps.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+    var n = parseInt(steps[i].getAttribute('data-step'), 10);
+    if (n >= 1 && n <= totalNumbered){
+      progressShell.style.display = '';
+      progressFill.style.width = (n / totalNumbered * 100) + '%';
+      progressText.textContent = 'Étape ' + n + ' sur ' + totalNumbered;
+      progressSection.textContent = steps[i].getAttribute('data-section') || '';
+    } else {
+      progressShell.style.display = 'none';
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  form.addEventListener('click', function(e){
+    var next = e.target.closest('[data-next]');
+    var prev = e.target.closest('[data-prev]');
+    if (next){ e.preventDefault(); current = Math.min(current + 1, steps.length - 1); showStep(current); }
+    if (prev){ e.preventDefault(); current = Math.max(current - 1, 0); showStep(current); }
+  });
+
+  function joinAnswer(name){
+    var vals = getValues(name);
+    if (!vals.length) return '';
+    var autre = form.querySelector('[name="' + name + '_autre"]');
+    return vals.map(function(v){
+      if (v === 'Autre' && autre && autre.value.trim()) return 'Autre : ' + autre.value.trim();
+      return v;
+    }).join(', ');
+  }
+
+  function textVal(name){
+    var el = form.querySelector('[name="' + name + '"]');
+    return el ? el.value.trim() : '';
+  }
+
+  function buildPayload(){
+    return {
+      "Envoyé le": new Date().toLocaleString('fr-FR'),
+      "Prénom": textVal('prenom'),
+      "E-mail": textVal('email'),
+      "Téléphone / WhatsApp": textVal('tel'),
+      "1. Âge": joinAnswer('q1'),
+      "2. Commune / quartier": textVal('q2'),
+      "3. Situation professionnelle": joinAnswer('q3'),
+      "4. Objectif principal": joinAnswer('q4'),
+      "5. Pratique actuelle du sport": joinAnswer('q5'),
+      "6. Lieu de pratique": joinAnswer('q6'),
+      "6b. Temps de trajet vers la salle": joinAnswer('q6b'),
+      "7. Freins à la régularité": joinAnswer('q7'),
+      "8. A déjà essayé de transformer sa silhouette": joinAnswer('q8'),
+      "9. Moyens déjà essayés": joinAnswer('q9'),
+      "10. Difficultés alimentaires": joinAnswer('q10'),
+      "11. Prête à modifier son alimentation": joinAnswer('q11'),
+      "12. Le plus important dans l'accompagnement": joinAnswer('q12'),
+      "13. Freins au coaching à distance": joinAnswer('q13'),
+      "14. Budget mensuel envisageable": joinAnswer('q14'),
+      "15. Difficulté prioritaire (ses mots)": textVal('q15'),
+      "16. Ok pour un échange 10-15min": joinAnswer('q16'),
+      "16b. Contact pour l'échange": textVal('q16_contact'),
+      "17. Veut infos avant-première": joinAnswer('q17'),
+      "17b. Contact pour l'avant-première": textVal('q17_contact')
+    };
+  }
+
+  var BACKUP_KEY = 'questionnaire_abidjan_backup';
+  var submitBtn = document.getElementById('submitBtn');
+  var statusLine = document.getElementById('statusLine');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var payload = buildPayload();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi…';
+    statusLine.textContent = '';
+    statusLine.classList.remove('error');
+
+    var body = Object.assign({ "_subject": "Nouvelle réponse — Questionnaire Abidjan" }, payload);
+
+    fetch('https://formspree.io/f/xnpnqbrd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function(res){
+      if (!res.ok) throw new Error('bad-status');
+      try {
+        localStorage.setItem(BACKUP_KEY, Object.keys(payload).map(function(k){
+          return k + ' : ' + (payload[k] || '—');
+        }).join('\n'));
+      } catch (err) {}
+      current = steps.length - 1;
+      showStep(current);
+    }).catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer mes réponses';
+      statusLine.textContent = "L'envoi a échoué. Vérifie ta connexion et réessaie.";
+      statusLine.classList.add('error');
+    });
+  });
+
+  showStep(0);
+})();
+</script>
+</body>
+</html>
