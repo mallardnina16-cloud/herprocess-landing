@@ -124,6 +124,12 @@
     display:none;
   }
   @media(min-width:900px){ .hero .sidenote{ display:block; } }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  @media(min-width:900px){ .hero-grid{ grid-template-columns:1.15fr .85fr; gap:48px; } }
+  .hero-media{ display:flex; justify-content:center; }
+  @media(min-width:900px){ .hero-media{ justify-content:flex-end; } }
+  .hero-media .frame{ width:100%; max-width:280px; }
+  @media(min-width:900px){ .hero-media .frame{ max-width:320px; } }
   .hero h1{
     font-weight:700; font-size:clamp(2.4rem,7vw,3.7rem); line-height:1.08; letter-spacing:-.01em; max-width:760px;
   }
@@ -179,6 +185,8 @@
   .ratio-16-9{ aspect-ratio:16/9; }
   .ratio-4-5{ aspect-ratio:4/5; }
   .ratio-3-4{ aspect-ratio:3/4; }
+  .ratio-9-16{ aspect-ratio:9/16; }
+  .ratio-5-9{ aspect-ratio:5/9; }
 
   /* ---------- problem ---------- */
   .problem-block{ max-width:640px; }
@@ -208,11 +216,17 @@
   /* ---------- results ---------- */
   .results-head{ max-width:480px; }
   .results-head h2{ font-weight:600; font-size:clamp(1.7rem,3.6vw,2.3rem); line-height:1.25; }
-  .ba-grid{ margin-top:46px; display:grid; grid-template-columns:1fr; gap:44px 32px; }
-  @media(min-width:640px){ .ba-grid{ grid-template-columns:1fr 1fr; } }
-  @media(min-width:1024px){ .ba-grid{ grid-template-columns:repeat(3,1fr); } }
-  .vid-grid{ margin-top:52px; display:grid; grid-template-columns:1fr; gap:36px; }
-  @media(min-width:768px){ .vid-grid{ grid-template-columns:1fr 1fr; } }
+  .ba-grid{ margin-top:46px; display:grid; grid-template-columns:1fr; justify-items:center; }
+  .ba-grid .frame{ width:100%; max-width:340px; }
+  .ba-slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; pointer-events:none; transition:opacity .35s ease; }
+  .ba-slide.is-active{ opacity:1; pointer-events:auto; }
+  .ba-nav{ display:flex; align-items:center; justify-content:center; gap:18px; margin-top:14px; }
+  .ba-arrow{ width:34px; height:34px; border-radius:50%; border:1px solid rgba(34,23,21,.5); background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); transition:background .2s,color .2s; padding:0; }
+  .ba-arrow:hover{ background:var(--wine); color:var(--cream); border-color:var(--wine); }
+  .ba-arrow svg{ width:14px; height:14px; }
+  .ba-count{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:rgba(34,23,21,.55); min-width:44px; text-align:center; }
+  .vid-grid{ margin-top:52px; display:grid; grid-template-columns:1fr; gap:36px; justify-items:center; }
+  .vid-grid .frame{ width:100%; max-width:340px; }
   blockquote{ margin:0; border-left:1px solid rgba(75,22,22,.4); padding-left:22px; }
   blockquote p{ font-family:'Poppins',sans-serif; font-weight:500; font-size:17px; line-height:1.55; }
   blockquote cite{ display:block; margin-top:14px; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--wine); }
@@ -310,8 +324,8 @@
       <div class="plate ratio-16-9">
         <video
           id="hero-video"
-          src="/presentation-nina.mp4"
-          poster="/presentation-nina-poster.jpg"
+          src="/videos/presentation-nina.mp4"
+          poster="/videos/presentation-nina-poster.jpg"
           autoplay
           muted
           loop
@@ -376,29 +390,27 @@
       <h2>Ce que la méthode change, au quotidien.</h2>
     </div>
 
-    <div class="ba-grid">
+    <div class="vid-grid">
       <div class="frame reveal">
-        <div class="plate ratio-4-5"><img src="/avantapresWanissa.jpg" alt="Wanissa — avant/après" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
-        <p class="caption">Fig. 01 — Wanissa, 3 mois — N'a jamais fait de sport par le passé et a décidé de se reprendre en main après sa grossesse</p>
-      </div>
-      <div class="frame reveal">
-        <div class="plate ratio-4-5"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
-        <p class="caption">Fig. 02 — Sarah, 8 mois — sortie d'un cycle de restriction et de reprises alimentaires</p>
-      </div>
-      <div class="frame reveal">
-        <div class="plate ratio-4-5"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
-        <p class="caption">Fig. 03 — Camille, 6 mois — programme ajusté chaque semaine selon son emploi du temps</p>
+        <div class="plate ratio-9-16" style="overflow:hidden;"><video src="/videos/temoignage-alia.mp4" poster="/videos/temoignage-alia-poster.jpg" controls playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video></div>
+        <p class="caption">Témoignage — Alia, cliente depuis 6 mois</p>
       </div>
     </div>
 
-    <div class="vid-grid">
+    <div class="ba-grid">
       <div class="frame reveal">
-        <div class="plate ratio-16-9"><div class="ph-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#221715"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-label">vidéo à ajouter</span></div>
-        <p class="caption">Témoignage — Sarah, cliente depuis 8 mois</p>
-      </div>
-      <div class="frame reveal">
-        <div class="plate ratio-16-9"><div class="ph-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#221715"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-label">vidéo à ajouter</span></div>
-        <p class="caption">Témoignage — Camille, cliente depuis 6 mois</p>
+        <div class="plate ratio-5-9 ba-carousel" style="overflow:hidden;">
+          <img class="ba-slide is-active" src="/photos/wanissa.jpg" alt="Transformation avant/après de Wanissa, 8 semaines d'accompagnement Her Process" data-caption="Fig. 01 — Wanissa — 8 semaines d'accompagnement">
+          <img class="ba-slide" src="/photos/elvira.jpg" alt="Transformation avant/après d'Elvira, 8 semaines d'accompagnement Her Process" data-caption="Fig. 02 — Elvira — 8 semaines d'accompagnement">
+          <img class="ba-slide" src="/photos/hasna.jpg" alt="Transformation avant/après de Hasna, 2 mois et demi d'accompagnement Her Process" data-caption="Fig. 03 — Hasna — 2 mois ½ d'accompagnement">
+          <img class="ba-slide" src="/photos/manon.jpg" alt="Transformation avant/après de Manon, 8 semaines d'accompagnement Her Process" data-caption="Fig. 04 — Manon — 8 semaines d'accompagnement">
+        </div>
+        <div class="ba-nav">
+          <button type="button" class="ba-arrow ba-prev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <span class="ba-count">01 / 04</span>
+          <button type="button" class="ba-arrow ba-next" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <p class="caption ba-caption">Fig. 01 — Wanissa — 8 semaines d'accompagnement</p>
       </div>
     </div>
 
@@ -410,15 +422,23 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="frame reveal">
-        <div class="plate ratio-3-4"><div class="ph-icon"></div><span class="ph-label">photo à ajouter</span></div>
-        <p class="caption">Nina, fondatrice de Her Process</p>
+        <div class="plate ratio-9-16 ba-carousel" style="overflow:hidden;">
+          <video class="ba-slide is-active" src="/videos/nina-avant.mp4" poster="/videos/nina-avant-poster.jpg" controls playsinline data-caption="Nina, fondatrice de Her Process — avant"></video>
+          <video class="ba-slide" src="/videos/nina-apres.mp4?v=5" poster="/videos/nina-apres-poster.jpg?v=5" controls playsinline data-caption="Nina, fondatrice de Her Process — après"></video>
+        </div>
+        <div class="ba-nav">
+          <button type="button" class="ba-arrow ba-prev" aria-label="Vidéo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <span class="ba-count">01 / 02</span>
+          <button type="button" class="ba-arrow ba-next" aria-label="Vidéo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <p class="caption ba-caption">Nina, fondatrice de Her Process — avant</p>
       </div>
       <div class="reveal">
         <p class="eyebrow">Pourquoi Her Process</p>
         <h2>Une méthode construite par une ancienne ingénieure d'affaires, pas une coach motivation.</h2>
         <p class="body">Nina a passé cinq ans comme ingénieure d'affaires avant de perdre plus de 30 kg — seule d'abord, puis accompagnée par un coach quand la progression a stagné. C'est ce cadre régulier qui a transformé le sport en indispensable plutôt qu'en contrainte. Son entourage a commencé à lui demander conseil ; elle a d'abord coaché par bouche-à-oreille, avant de quitter son poste pour se former et fonder Her Process.</p>
         <p class="body">Elle a aussi développé elle-même l'application de suivi que ses clientes utilisent chaque jour. Elle ne vend pas un programme standard — elle construit un système propre à chaque cliente, avec la rigueur d'une méthode plutôt que l'énergie d'un coaching motivation classique.</p>
-       <p class="body">La priorité, c'est de te sentir bien et de te remettre au premier plan — pour t'aimer, et mieux aimer celles et ceux qui t'entourent. On commence presque toujours le sport pour le physique. On comprend ensuite que c'est bien plus que ça : une question de santé et de bien-être général.</p>
+        <p class="body">La priorité, c'est de te sentir bien et de te remettre au premier plan — pour t'aimer, et mieux aimer celles et ceux qui t'entourent. On commence presque toujours le sport pour le physique. On comprend ensuite que c'est bien plus que ça : une question de santé et de bien-être général.</p>
         <p class="foot">Le sport comme outil, pas comme punition — mais toujours au service d'un résultat mesurable.</p>
       </div>
     </div>
@@ -555,6 +575,31 @@
       if (on) { video.play().catch(function(){}); }
     });
   })();
+
+  document.querySelectorAll('.ba-carousel').forEach(function(carousel){
+    var frame = carousel.closest('.frame');
+    var slides = carousel.querySelectorAll('.ba-slide');
+    var caption = frame.querySelector('.ba-caption');
+    var count = frame.querySelector('.ba-count');
+    var total = slides.length;
+    var idx = 0;
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function render(){
+      slides.forEach(function(s, i){
+        var active = i === idx;
+        s.classList.toggle('is-active', active);
+        if (s.tagName === 'VIDEO' && !active) { s.pause(); }
+      });
+      caption.textContent = slides[idx].dataset.caption;
+      count.textContent = pad(idx + 1) + ' / ' + pad(total);
+    }
+    frame.querySelector('.ba-prev').addEventListener('click', function(){
+      idx = (idx - 1 + total) % total; render();
+    });
+    frame.querySelector('.ba-next').addEventListener('click', function(){
+      idx = (idx + 1) % total; render();
+    });
+  });
 
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
